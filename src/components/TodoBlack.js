@@ -4,8 +4,8 @@ export default function TodoBlack() {
   return (
 <div className="AndroidLarge1 w-96 h-96 relative bg-slate-800 rounded-3xl shadow">
   <div className="ToDoList left-[23.39px] top-[70.17px] absolute text-zinc-300 text-3xl font-semibold font-['Inter']">To Do List</div>
-  <div className="ThisWeek left-[23.39px] top-[146.18px] absolute text-stone-300 text-lg font-semibold font-['Inter']">This Week</div>
-  <div className="Monday12thMay left-[23.39px] top-[196.47px] absolute text-red-500 text-base font-medium font-['Inter']">Monday, 12th May</div>
+  
+  
   
   <div className="Rectangle1 w-80 h-14 left-[23px] top-[852px] absolute bg-white bg-opacity-80 rounded-xl shadow" />
   <div className="Group15 w-96 h-20 left-[23px] top-[342px] absolute">
