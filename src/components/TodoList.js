@@ -1,5 +1,6 @@
 import React from 'react'
 import TailWeek from '../UI/TailWeek'
+import TailInput from '../UI/TailInput'
 
 export default function TodoList() {
   return (

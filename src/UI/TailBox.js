@@ -5,7 +5,7 @@ import TailTag from './TailTag'
 export default function TailBox() {
     return (
         <div className="Box w-96 h-20">
-            <div className="Rectangle1 w-96 h-20 bg-white bg-opacity-80 rounded-xl shadow" >
+            <div className="Rectangle1 w-96 h-20 bg-white bg-opacity-60 rounded-xl shadow" >
                 <div className="BuyGroceries text-neutral-900 text-lg font-normal font-['Inter']">
                     Buy groceries
                 </div>
