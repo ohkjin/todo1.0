@@ -2,12 +2,12 @@ import React from 'react'
 import TailTag from './TailTag'
 // import {FcMultipleCameras} from 'react-icons/fc'
 
-export default function TailBox() {
+export default function TailBox({text}) {
     return (
-        <div className="Box w-96 h-20">
-            <div className="Rectangle1 w-96 h-20 bg-white bg-opacity-60 rounded-xl shadow" >
-                <div className="BuyGroceries text-neutral-900 text-lg font-normal font-['Inter']">
-                    Buy groceries
+        <div className="Box w-full">
+            <div className="Rectangle1 w-full h-20 flex justify-start items-start px-5 py-4 bg-slate-50 bg-opacity-70 rounded-xl shadow shadow-white" >
+                <div className="Text text-slate-800 text-base font-medium font-['Inter']">
+                    {text}
                 </div>
             </div>
             <div className="EditDelte w-5 h-5 left-[297.04px] top-[26.90px] absolute justify-center items-center inline-flex">
