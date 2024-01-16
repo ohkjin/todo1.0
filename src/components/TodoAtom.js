@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const inputArray = atom({
-    key : 'inputArray',
-    default : ['hi']
+export const todoArray = atom({
+    key : 'todoArray',
+    default : []
 })
