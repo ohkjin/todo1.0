@@ -3,17 +3,11 @@ import { useRecoilState } from 'recoil'
 import { todoArray } from '../components/TodoAtom';
 import { RiEdit2Line, RiDeleteBin6Line } from "react-icons/ri";
 
-function replaceArrItemAtIdx(arr, idx, newText){
-    return [...arr.slice(1,idx),newText,...arr.slice(idx+1)]
-}
-
-function removeArrItemAtIdx(arr, idx){
-    return [...arr.slice(1,idx),...arr.slice(idx+1)]
-}
-
 export default function TailBox({ item }) {
     const [todoArr, setTodoArr] = useRecoilState(todoArray);
-    const idx = todoArr.findIndex(arrItem => arrItem = item);
+    const idx = todoArr.findIndex(arrItem => arrItem === item);
+    let linetrough = item.isComplete? 'line-through text-zinc-500 italic':'text-slate-800';
+    // console.log(idx)
     const editItem = ({target:{value}})=>{
         const newArr = replaceArrItemAtIdx(todoArr,idx,{
             ...item,
@@ -25,17 +19,25 @@ export default function TailBox({ item }) {
         const newArr = removeArrItemAtIdx(todoArr, idx);
         setTodoArr(newArr);
     }
+    const toggleComplete = () =>{
+        const newArr = replaceArrItemAtIdx(todoArr, idx,{
+            ...item,
+            isComplete: !item.isComplete,
+        });
+        setTodoArr(newArr);
+    }
 
     return (
         <div className="Box w-full my-2 h-20 flex justify-between items-center px-5 py-4 bg-slate-50 bg-opacity-70 rounded-xl shadow shadow-white" >
             <input type='checkbox' 
                    checked={item.isComplete}
+                   onChange={toggleComplete}
                    className='border border-red-400'/>
             <div className='TextandTags flex flex-col justify-start items-start'>
                 <input type='text'
                        value={item.text}
                        onChange={editItem}
-                       className="Text bg-inherit appearance-none text-slate-800 text-base font-medium font-['Inter']"/>
+                       className={`Text ${linetrough} bg-inherit appearance-none  text-base font-medium font-['Inter']`}/>
                 <TailTag text='High' />
             </div>
             <div className='flex flex-row'>
@@ -48,4 +50,12 @@ export default function TailBox({ item }) {
             </div>
         </div>
     )
+}
+
+function replaceArrItemAtIdx(arr, idx, newText){
+    return [...arr.slice(0,idx),newText,...arr.slice(idx+1)]
+}
+
+function removeArrItemAtIdx(arr, idx){
+    return [...arr.slice(0,idx),...arr.slice(idx+1)]
 }

@@ -12,7 +12,9 @@ export default function TailDay({text}) {
         </div>
         <div>
           {/* <TailBox item={test}/> */}
-          {todoList.map((todo)=><TailBox key={todo.id} item={todo}/>)}
+          {todoList.map((todo)=><div><TailBox key={`todo${todo.id}`} item={todo}/>
+                                {/* <div className='text-white'>{todo.id}is{todo.text}and{todo.isComplete}</div> */}
+                                </div>)}
         </div>
     </div>
   )
