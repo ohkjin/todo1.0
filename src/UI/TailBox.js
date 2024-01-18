@@ -1,24 +1,51 @@
-import React from 'react'
 import TailTag from './TailTag'
-// import {FcMultipleCameras} from 'react-icons/fc'
+import { useRecoilState } from 'recoil'
+import { todoArray } from '../components/TodoAtom';
+import { RiEdit2Line, RiDeleteBin6Line } from "react-icons/ri";
 
-export default function TailBox({item}) {
+function replaceArrItemAtIdx(arr, idx, newText){
+    return [...arr.slice(1,idx),newText,...arr.slice(idx+1)]
+}
+
+function removeArrItemAtIdx(arr, idx){
+    return [...arr.slice(1,idx),...arr.slice(idx+1)]
+}
+
+export default function TailBox({ item }) {
+    const [todoArr, setTodoArr] = useRecoilState(todoArray);
+    const idx = todoArr.findIndex(arrItem => arrItem = item);
+    const editItem = ({target:{value}})=>{
+        const newArr = replaceArrItemAtIdx(todoArr,idx,{
+            ...item,
+            text: value,
+        })
+        setTodoArr(newArr);
+    }
+    const deleteItem = () => {
+        const newArr = removeArrItemAtIdx(todoArr, idx);
+        setTodoArr(newArr);
+    }
+
     return (
-        <div className="Box w-full my-2">
-            <div className="Rectangle1 w-full h-20 flex justify-start items-start px-5 py-4 bg-slate-50 bg-opacity-70 rounded-xl shadow shadow-white" >
-                <div className="Text text-slate-800 text-base font-medium font-['Inter']">
-                    {item.text}
-                </div>
+        <div className="Box w-full my-2 h-20 flex justify-between items-center px-5 py-4 bg-slate-50 bg-opacity-70 rounded-xl shadow shadow-white" >
+            <input type='checkbox' 
+                   checked={item.isComplete}
+                   className='border border-red-400'/>
+            <div className='TextandTags flex flex-col justify-start items-start'>
+                <input type='text'
+                       value={item.text}
+                       onChange={editItem}
+                       className="Text bg-inherit appearance-none text-slate-800 text-base font-medium font-['Inter']"/>
+                <TailTag text='High' />
             </div>
-            <div className="EditDelte w-5 h-5 left-[297.04px] top-[26.90px] absolute justify-center items-center inline-flex">
-                <div className="ClarityEditLine w-5 h-5 relative flex-col justify-start items-start flex" />
+            <div className='flex flex-row'>
+                <button>
+                    <RiEdit2Line className='w-5 h-5 text-red-700 opacity-50 mx-1' />
+                </button>
+                <button onClick={deleteItem}>
+                    <RiDeleteBin6Line className='w-5 h-5 text-red-700 opacity-50 mx-1' />
+                </button>
             </div>
-            <div className="FluentDelete20Regular w-5 h-5 px-0.5 py-0.5 left-[329.78px] top-[26.90px] absolute justify-center items-center inline-flex" />
-            <div className="Frame3 w-10 h-6 pl-2 pr-1.5 py-1 left-[23.39px] top-[46.78px] absolute bg-red-500 bg-opacity-50 rounded justify-center items-center gap-2.5 inline-flex">
-                {/* <FontAwesomeIcon icon="fa-brands fa-react" /> */}
-            </div>
-            <div className="FluentDelete20Regular w-5 h-5 left-[329.78px] top-[26.90px] absolute" />
-            <TailTag text='High' />
         </div>
     )
 }

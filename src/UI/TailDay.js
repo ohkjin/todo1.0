@@ -11,7 +11,7 @@ export default function TailDay({text}) {
             {text}
         </div>
         <div>
-          {/* <TailBox text={'hiasdfsadfds'}/> */}
+          {/* <TailBox item={test}/> */}
           {todoList.map((todo)=><TailBox key={todo.id} item={todo}/>)}
         </div>
     </div>

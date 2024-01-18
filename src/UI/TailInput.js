@@ -5,7 +5,7 @@ import { useSetRecoilState } from 'recoil';
 // 고유 id 생성용
 let id =  0;
 function getId(){
-  return id++;
+  return id++; // it strangely starts from 0
 }
 
 export default function TailInput() {
@@ -24,7 +24,7 @@ export default function TailInput() {
       ...prevArr,
       {
         id: getId(),
-        text: inputValue,
+        text: inputValue+id,
         isComplete: false,
       },
     ]);
@@ -45,7 +45,7 @@ export default function TailInput() {
         {/* {testBox} */}
     <div className="InputBox w-5/6 h-10 bg-white bg-opacity-60 rounded-xl shadow shadow-white
                              flex justify-center items-center" >
-      <input type="text" value={inputValue} onChange={handleInputChange} name="inputValue" placeholder="input text" className='opacity-50 w-[90%]'/>
+      <input type="text" value={inputValue} onChange={handleInputChange} placeholder="input text" className='opacity-50 w-[90%]'/>
     </div>
     <div>
       <button type="submit" onClick={handleInput} onKeyPress={handleOnKeyPress} className='bg-red-400 bg-opacity-80 w-10 h-10 rounded-full ml-3'></button>
