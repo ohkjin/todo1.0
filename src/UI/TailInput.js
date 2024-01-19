@@ -41,7 +41,7 @@ export default function TailInput() {
       {/* {testBox} */}
       <div className="InputBox w-5/6 h-10 bg-white bg-opacity-60 rounded-xl shadow shadow-white
                              flex justify-center items-center" >
-        <input type="text" value={inputValue} onChange={handleInputChange} onKeyUp={(e)=>handleOnKeyUP(e)} placeholder="input text" className='opacity-50 bg-opacity-0 w-[90%]' />
+        <input type="text" value={inputValue} onChange={handleInputChange} onKeyUp={(e)=>handleOnKeyUP(e)} placeholder="input text" className='opacity-80 text-slate-900 placeholder-slate-500 bg-transparent w-[90%]' />
       </div>
       <div className='ml-3'>
         <button type="submit" onClick={handleInput} >
