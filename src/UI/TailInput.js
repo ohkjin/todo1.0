@@ -21,6 +21,7 @@ export default function TailInput() {
       {
         id: getId(),
         text: inputValue,
+        createdDate: today,
         isComplete: false,
       },
     ]);

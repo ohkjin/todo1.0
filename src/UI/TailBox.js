@@ -39,6 +39,10 @@ export default function TailBox({ item }) {
                        onChange={editItem}
                        className={`Text ${linetrough} bg-inherit appearance-none  text-base font-medium font-['Inter']`}/>
                 {/* <TailTag text='High' /> */}
+                <input type='text'
+                       readOnly
+                       value={item.createdDate}
+                       className={`Text ${linetrough} bg-inherit appearance-none  text-base font-medium text-sm font-['Inter']`}/>
             </div>
             <div className='flex flex-row'>
                 <button>
